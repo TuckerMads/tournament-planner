@@ -7,15 +7,6 @@ router.post('/tournaments', (req, res) => {
   const { name, organizer, passcode } = req.body;
 
   db.prepare(`
-    CREATE TABLE IF NOT EXISTS tournaments (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      organizer TEXT NOT NULL,
-      passcode TEXT NOT NULL
-    )
-  `).run();
-
-  db.prepare(`
     INSERT INTO tournaments (name, organizer, passcode)
     VALUES (?, ?, ?)
   `).run(name, organizer, passcode);
