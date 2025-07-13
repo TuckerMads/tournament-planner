@@ -8,11 +8,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const name = document.getElementById('tournament-name').value;
     const organizer = document.getElementById('org-name').value;
     const passcode = document.getElementById('passcode').value;
+    const description = document.getElementById('description').value;
+    const maxTeams = document.getElementById('max-teams').value;
 
     const response = await fetch('/api/tournaments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, organizer, passcode })
+      body: JSON.stringify({ name, organizer, passcode, description, maxTeams })
     });
 
     if (response.ok) {

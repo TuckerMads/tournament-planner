@@ -1,15 +1,17 @@
 import { Router } from 'express';
 import db from '../db';
+import { deserialize } from 'v8';
 
 const router = Router();
 
 router.post('/tournaments', (req, res) => {
-  const { name, organizer, passcode } = req.body;
+  const { name, organizer, passcode, description, maxTeams } = req.body;
 
+  console.log(description, maxTeams);
   db.prepare(`
-    INSERT INTO tournaments (name, organizer, passcode)
-    VALUES (?, ?, ?)
-  `).run(name, organizer, passcode);
+    INSERT INTO tournaments (name, organizer, passcode, description, maxTeams)
+    VALUES (?, ?, ?, ?, ?)
+  `).run(name, organizer, passcode, description, maxTeams);
 
   res.status(201).json({ message: 'Tournament created' });
 });
