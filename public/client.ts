@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   joinForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const name = (document.getElementById('join-name') as HTMLInputElement).value;
     const passcode = (document.getElementById('join-passcode') as HTMLInputElement).value;
-
-    const response = await fetch(`/api/tournaments/by-passcode/${encodeURIComponent(passcode)}`);
+    const response = await fetch(`/api/tournaments/by-passcode?name=${encodeURIComponent(name)}&passcode=${encodeURIComponent(passcode)}`);
     if (response.ok) {
       const tournament = await response.json();
       window.location.href = `/joinTournament/${tournament.id}`;

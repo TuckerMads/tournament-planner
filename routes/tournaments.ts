@@ -23,16 +23,7 @@ router.post('/', (req, res) => {
   }
 });
 
-router.get('/by-passcode/:passcode', (req, res) => {
-  const { passcode } = req.params;
-  const tournament = db.prepare('SELECT * FROM tournaments WHERE passcode = ?').get(passcode);
-  if (!tournament) return res.status(404).json({ message: 'Not found' });
-  res.json(tournament);
-});
-
 router.get('/exists', (req, res) => {
-  console.log('🎯 /api/tournaments/exists route hit');
-  console.log('Raw query:', req.query);
   const { name, passcode } = req.query;
 
   if (!name || !passcode) {
@@ -43,9 +34,28 @@ router.get('/exists', (req, res) => {
     SELECT id FROM tournaments WHERE name = ? AND passcode = ?
   `).get(name, passcode);
 
-  console.log(existing);
   res.json({ exists: !!existing });
 });
+
+router.get('/by-passcode', (req, res) => {
+  const { name, passcode } = req.query;
+
+  if (!name || !passcode) {
+    return res.status(400).json({ message: 'Missing name or passcode' });
+  }
+
+  const tournament = db.prepare(`
+    SELECT * FROM tournaments WHERE name = ? AND passcode = ?
+  `).get(name, passcode);
+
+  if (!tournament) {
+    return res.status(404).json({ message: 'Not found' });
+  }
+
+  res.json(tournament);
+});
+
+
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;

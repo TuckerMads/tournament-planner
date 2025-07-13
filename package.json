@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && node dist/index.js"
+    "build:client": "tsc --project tsconfig.json",
+    "start": "npm run build:client && ts-node index.ts",
+    "dev": "npm run build:client && ts-node-dev --respawn index.ts"
   },
   "keywords": [],
   "author": "",

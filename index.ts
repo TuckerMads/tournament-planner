@@ -11,7 +11,6 @@ initializeDatabase();
 app.use(express.json());
 app.use('/public', express.static('public'));
 
-console.log('loading');
 app.use('/api/tournaments', tournamentRoutes);
 
 app.use('/', pageRoutes);

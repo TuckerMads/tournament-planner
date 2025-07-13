@@ -19,14 +19,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const maxTeamsValue = document.getElementById('max-teams')?.value || '0';
     const maxPlayerCount = parseInt(maxTeamsValue, 10);
 
-    console.log('🔍 Validating:', name, passcode);
-
     try {
       const checkRes = await fetch(
         `/api/tournaments/exists?name=${encodeURIComponent(name)}&passcode=${encodeURIComponent(passcode)}`
       );
       const existsResult = await checkRes.json();
-
 
       if (existsResult.exists) {
         status.textContent = 'A tournament with that name and passcode already exists.';

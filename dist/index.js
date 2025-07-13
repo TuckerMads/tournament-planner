@@ -14,7 +14,6 @@ app.use(express_1.default.json());
 app.use('/public', express_1.default.static('public'));
 console.log('loading');
 app.use('/api/tournaments', tournaments_1.default);
-// ✅ Page-level routes like index.html and createTournament.html
 app.use('/', pages_1.default);
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
