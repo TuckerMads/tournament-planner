@@ -1,6 +1,6 @@
 
 document.getElementById('create-new-tournament')?.addEventListener('click', () => {
-  window.location.href = '/createTournament'; // ✅ correct
+  window.location.href = '/createTournament'
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tournament = await response.json();
       window.location.href = `/joinTournament/${tournament.id}`;
     } else {
-      joinStatus.textContent = '❌ Invalid passcode';
+      joinStatus.textContent = 'Invalid passcode';
       joinStatus.style.color = 'red';
     }
   });

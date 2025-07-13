@@ -11,7 +11,9 @@ initializeDatabase();
 app.use(express.json());
 app.use('/public', express.static('public'));
 
-app.use('/api', tournamentRoutes);
+console.log('loading');
+app.use('/api/tournaments', tournamentRoutes);
+
 app.use('/', pageRoutes);
 
 app.listen(PORT, () => {

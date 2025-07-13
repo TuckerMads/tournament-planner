@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
-    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -37,33 +37,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _a;
 var _this = this;
 (_a = document.getElementById('create-new-tournament')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
-    window.location.href = '/createTournament'; // ✅ correct
+    window.location.href = '/createTournament';
 });
 document.addEventListener('DOMContentLoaded', function () {
     var joinForm = document.getElementById('join-form');
     var joinStatus = document.getElementById('join-status');
-    joinForm === null || joinForm === void 0 ? void 0 : joinForm.addEventListener('submit', function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var passcode, response, tournament;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    e.preventDefault();
-                    passcode = document.getElementById('join-passcode').value;
-                    return [4 /*yield*/, fetch("/api/tournaments/by-passcode/".concat(encodeURIComponent(passcode)))];
-                case 1:
-                    response = _a.sent();
-                    if (!response.ok) return [3 /*break*/, 3];
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    tournament = _a.sent();
-                    window.location.href = "/joinTournament/".concat(tournament.id);
-                    return [3 /*break*/, 4];
-                case 3:
-                    joinStatus.textContent = '❌ Invalid passcode';
-                    joinStatus.style.color = 'red';
-                    _a.label = 4;
-                case 4: return [2 /*return*/];
-            }
+    joinForm === null || joinForm === void 0 ? void 0 : joinForm.addEventListener('submit', function (e) {
+        return __awaiter(_this, void 0, void 0, function () {
+            var passcode, response, tournament;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        e.preventDefault();
+                        passcode = document.getElementById('join-passcode').value;
+                        return [4 /*yield*/, fetch("/api/tournaments/by-passcode/".concat(encodeURIComponent(passcode)))];
+                    case 1:
+                        response = _a.sent();
+                        if (!response.ok) return [3 /*break*/, 3];
+                        return [4 /*yield*/, response.json()];
+                    case 2:
+                        tournament = _a.sent();
+                        window.location.href = "/joinTournament/".concat(tournament.id);
+                        return [3 /*break*/, 4];
+                    case 3:
+                        joinStatus.textContent = '❌ Invalid passcode';
+                        joinStatus.style.color = 'red';
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
+                }
+            });
         });
-    }); });
+    });
 });

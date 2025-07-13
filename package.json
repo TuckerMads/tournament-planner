@@ -2,12 +2,10 @@
   "name": "tstest",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
-  "build:client": "tsc public/client.ts --outDir public",
-  "start": "npm run build:client && ts-node index.ts",
-  "dev": "ts-node-dev --respawn index.ts"
-}
-,
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

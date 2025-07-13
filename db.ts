@@ -13,7 +13,8 @@ export function initializeDatabase() {
       organizer TEXT NOT NULL,
       passcode TEXT NOT NULL,
       description TEXT NOT NULL,
-      maxTeams INT
+      maxTeams INT,
+      UNIQUE(name, passcode)
     )
   `).run();
 }
