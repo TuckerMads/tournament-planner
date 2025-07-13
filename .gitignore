@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Compiled JavaScript (from TypeScript)
+*.js
+*.js.map
+
+# TypeScript build output
+dist/
+public/*.js
+
+# SQLite database
+*.db
+
+# Environment variables
+.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
